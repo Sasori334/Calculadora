@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .calculadora {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .tela {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 20px;
+      text-align: right;
+      font-size: 1.5em;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    button {
+      padding: 15px;
+      font-size: 1em;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .igual {
+      background-color: #28a745;
+    }
+    .igual:hover {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculadora">
+    <input type="text" class="tela" id="tela" disabled />
+    <div class="botoes">
+      <button onclick="inserir('7')">7</button>
+      <button onclick="inserir('8')">8</button>
+      <button onclick="inserir('9')">9</button>
+      <button onclick="operacao('/')">/</button>
+      <button onclick="inserir('4')">4</button>
+      <button onclick="inserir('5')">5</button>
+      <button onclick="inserir('6')">6</button>
+      <button onclick="operacao('*')">*</button>
+      <button onclick="inserir('1')">1</button>
+      <button onclick="inserir('2')">2</button>
+      <button onclick="inserir('3')">3</button>
+      <button onclick="operacao('-')">-</button>
+      <button onclick="inserir('0')">0</button>
+      <button onclick="inserir('.')">.</button>
+      <button onclick="calcular()" class="igual">=</button>
+      <button onclick="operacao('+')">+</button>
+      <button onclick="limpar()" style="grid-column: span 4; background-color: #dc3545;">C</button>
+    </div>
+  </div>
+
+  <script>
+    let tela = document.getElementById('tela');
+    let operacaoAtual = '';
+    
+    function inserir(valor) {
+      tela.value += valor;
+    }
+    
+    function operacao(op) {
+      if (tela.value === '') return;
+      operacaoAtual = op;
+      tela.value += ` ${op} `;
+    }
+    
+    function calcular() {
+      try {
+        tela.value = eval(tela.value.replace('x', '*').replace('÷', '/'));
+      } catch (error) {
+        alert('Erro na operação');
+        limpar();
+      }
+    }
+    
+    function limpar() {
+      tela.value = '';
+    }
+  </script>
+</body>
+</html>
+<script>
+    let tela = document.getElementById('tela');
+let operacaoAtual = '';
+
+function inserir(valor) {
+  tela.value += valor;
+}
+
+function operacao(op) {
+  if (tela.value === '') return;
+  operacaoAtual = op;
+  tela.value += ` ${op} `;
+}
+
+function calcular() {
+  try {
+    // Avalia a expressão no visor e calcula o resultado
+    tela.value = eval(tela.value.replace('x', '*').replace('÷', '/'));
+  } catch (error) {
+    alert('Erro na operação');
+    limpar();
+  }
+}
+
+function limpar() {
+  // Limpa o visor
+  tela.value = '';
+}
+
+    </script>
+    <style>
+        /* Corpo da página */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+
+/* Estilo da calculadora */
+.calculadora {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 320px;
+}
+
+/* Tela da calculadora */
+.tela {
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: right;
+  padding: 10px;
+  background: #f7f9fc;
+  color: #333;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Contêiner de botões */
+.botoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Estilo dos botões */
+button {
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  background: #007bff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #003f7f;
+  transform: scale(0.98);
+}
+
+/* Botão de igual */
+.igual {
+  background: #28a745;
+}
+
+.igual:hover {
+  background: #1e7e34;
+}
+
+.igual:active {
+  background: #145d25;
+}
+
+/* Botão de limpar */
+button[onclick="limpar()"] {
+  grid-column: span 4;
+  background: #dc3545;
+}
+
+button[onclick="limpar()"]:hover {
+  background: #b02a37;
+}
+
+button[onclick="limpar()"]:active {
+  background: #7a1e28;
+}
+
+        </style>
+        
